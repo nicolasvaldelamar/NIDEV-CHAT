@@ -1,3 +1,4 @@
+import { Avatar } from '@/components/Avatar'
 import { PlusIcon } from '@/components/Icon'
 import Head from 'next/head'
 
@@ -28,10 +29,34 @@ function Aside() {
 }
 
 function Chat() {
+  const message = [
+    {
+      id: 1,
+      ia: false,
+      message: 'Explain quantum comuputing to me in simple terms'
+    },
+    {
+      id: 2,
+      ia: true,
+      message:
+        'Quantum computing is a type of computing that uses quantum-mechanical phenomena, such as superposition and entanglement, to perform operations on data. A quantum computer is not a supercomputer that can run quantum algorithms, but rather a physical device that can carry out quantum operations.'
+    }
+  ]
+
   return (
-    <div>
+    <div className='flex flex-col h-full flex-1 pl-[260px]'>
       <main>
-        <h1>Chat</h1>
+        {message.map((message) => (
+          <article key={message.id} className='flex gap-4 p-4 m-auto max-w-3xl'>
+            <Avatar>
+              <img
+                alt='foto_usuario'
+                src='https://media.licdn.com/dms/image/D4E03AQHnBaZMcTxwDw/profile-displayphoto-shrink_400_400/0/1669702152451?e=1682553600&v=beta&t=YDlezHBJgZt7nOHz70U9jn4DyGtw2l8RoJvhORl79sU'
+              />
+            </Avatar>
+            <p>{message.message}</p>
+          </article>
+        ))}
       </main>
     </div>
   )
